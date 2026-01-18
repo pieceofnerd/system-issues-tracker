@@ -112,15 +112,15 @@ From the `issue-tracker>` prompt, you can type commands:
 
 *   **Create Issue**:
     ```
-    create -d "Fix login flow on mobile" -p AD-1
+    create --description "Fix login flow on mobile" --parentId AD-1
     ```
 *   **Update Issue Status**:
     ```
-    update-status -i AD-1 -s IN_PROGRESS
+    update-status --id AD-1 --status IN_PROGRESS
     ```
 *   **List Issues**:
     ```
-    list -s OPEN
+    list --status OPEN
     ```
 *   **Get Help**:
     ```
@@ -137,9 +137,9 @@ From the `issue-tracker>` prompt, you can type commands:
 Execute a single command directly from your terminal:
 
 ```bash
-java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar create -d "Implement user profile page"
-java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar update-status -i AD-2 -s CLOSED
-java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar list -s IN_PROGRESS
+java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar create --description "Implement user profile page"
+java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar update-status --id AD-2 --status CLOSED
+java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar list --status IN_PROGRESS
 java -jar build/libs/system-issues-tracker-0.0.1-SNAPSHOT.jar --help
 ```
 
