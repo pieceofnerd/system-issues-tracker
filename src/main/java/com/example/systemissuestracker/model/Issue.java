@@ -58,8 +58,6 @@ public final class Issue {
         return updatedAt;
     }
 
-
-
     public Issue withId(String newId) {
         return new Issue(newId, this.description, this.parentId, this.status, this.createdAt, this.updatedAt);
     }
@@ -74,6 +72,10 @@ public final class Issue {
 
     public Issue withUpdatedAt(LocalDateTime newUpdatedAt) {
         return new Issue(this.id, this.description, this.parentId, this.status, this.createdAt, newUpdatedAt);
+    }
+
+    public Issue withParentId(String newParentId) {
+        return new Issue(this.id, this.description, newParentId, this.status, this.createdAt, this.updatedAt);
     }
 
     @Override

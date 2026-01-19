@@ -1,6 +1,8 @@
 package com.example.systemissuestracker.facade;
 
 import com.example.systemissuestracker.client.GoogleSheetsClient;
+import com.example.systemissuestracker.exception.IssueNotFoundException;
+import com.example.systemissuestracker.exception.PreexistingIdException;
 import com.example.systemissuestracker.idgenerator.IssueIdGenerator;
 import com.example.systemissuestracker.mapper.IssueRowMapper;
 import com.example.systemissuestracker.model.Issue;
@@ -36,7 +38,7 @@ public class GoogleSheetsIssueFacade implements IssueFacade {
     @Override
     public Issue create(Issue issue) {
         if (issue.getId() != null) {
-            throw new IllegalArgumentException("Cannot create an issue with a pre-assigned ID. ID must be null.");
+            throw new PreexistingIdException("Cannot create an issue with a pre-assigned ID. ID must be null.");
         }
 
         Issue newIssue = issue
@@ -56,7 +58,7 @@ public class GoogleSheetsIssueFacade implements IssueFacade {
 
         Optional<Integer> rowIndexOpt = findRowIndexOfIssue(issue.getId());
         if (rowIndexOpt.isEmpty()) {
-            throw new RuntimeException("Issue not found with ID: " + issue.getId());
+            throw new IssueNotFoundException("Issue not found with ID: " + issue.getId());
         }
         int rowIndex = rowIndexOpt.get();
 

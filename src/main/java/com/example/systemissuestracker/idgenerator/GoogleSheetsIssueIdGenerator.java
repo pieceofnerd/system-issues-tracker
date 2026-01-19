@@ -1,6 +1,7 @@
 package com.example.systemissuestracker.idgenerator;
 
 import com.example.systemissuestracker.client.GoogleSheetsClient;
+import com.example.systemissuestracker.exception.CorruptedIdException;
 import com.example.systemissuestracker.util.GoogleSheetsConstants;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +30,7 @@ public class GoogleSheetsIssueIdGenerator implements IssueIdGenerator {
         try {
             return Integer.parseInt(cellValue);
         } catch (NumberFormatException e) {
-            return 0;
+            throw new CorruptedIdException("Corrupted ID counter in Metadata sheet. Expected integer but got: " + cellValue, e);
         }
     }
 
