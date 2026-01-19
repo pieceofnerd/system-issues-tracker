@@ -127,7 +127,7 @@ class FunctionalTest {
 
         String description2 = "Functional Test Issue 2 (Child)";
         String parentId2 = "AD-1";
-        String[] createArgs2 = {"create", "--description", description2, "--parent", parentId2}; // Changed --parent to --parentId
+        String[] createArgs2 = {"create", "--description", description2, "--parent", parentId2};
         picocliRunner.run(createArgs2);
 
         assertTrue(outContent.toString().contains("Created issue: " + GoogleSheetsConstants.ID_PREFIX + "-2"));
@@ -163,7 +163,7 @@ class FunctionalTest {
         picocliRunner.run(listArgs2);
 
         assertTrue(outContent.toString().contains(GoogleSheetsConstants.ID_PREFIX + "-1"));
-        assertFalse(outContent.toString().contains(GoogleSheetsConstants.ID_PREFIX + "-2")); // AD-2 should not be listed
+        assertFalse(outContent.toString().contains(GoogleSheetsConstants.ID_PREFIX + "-2"));
         outContent.reset();
 
 
@@ -171,7 +171,7 @@ class FunctionalTest {
         picocliRunner.run(listArgs3);
 
         assertFalse(outContent.toString().contains(GoogleSheetsConstants.ID_PREFIX + "-1"));
-        assertTrue(outContent.toString().contains(GoogleSheetsConstants.ID_PREFIX + "-2")); // AD-2 should still be OPEN
+        assertTrue(outContent.toString().contains(GoogleSheetsConstants.ID_PREFIX + "-2"));
         outContent.reset();
     }
 

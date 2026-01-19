@@ -53,7 +53,7 @@ class SystemIssueServiceImplTest {
         when(issueFacade.findById("AD-1")).thenReturn(Optional.of(new Issue("AD-1", "Parrent issue", null, IssueStatus.OPEN, LocalDateTime.now(), LocalDateTime.now())));
         when(issueFacade.create(any(Issue.class))).thenReturn(issue);
 
-        Issue result = systemIssueService.createIssue("New Issue", "AD-1"); // User input '0'
+        Issue result = systemIssueService.createIssue("New Issue", "AD-1");
 
         assertNotNull(result);
         assertEquals("AD-2", result.getId());

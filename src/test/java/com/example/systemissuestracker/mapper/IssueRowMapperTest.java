@@ -31,7 +31,7 @@ class IssueRowMapperTest {
     }
 
     @Test
-    void testIssueToRow() {
+    void mapIssueToRow() {
         List<Object> row = mapper.issueToRow(issue);
 
         assertEquals(6, row.size());
@@ -44,14 +44,14 @@ class IssueRowMapperTest {
     }
 
     @Test
-    void testIssueToRowHandlesNullParentId() {
+    void mapIssueToRowHandlesNullParentId() {
         Issue issueWithoutParent = issue.withParentId(null);
         List<Object> row = mapper.issueToRow(issueWithoutParent);
         assertEquals("", row.get(2));
     }
 
     @Test
-    void testRowToIssue() {
+    void mapRowToIssue() {
         List<Object> row = Arrays.asList(
                 "AD-2",
                 "Sample Description",
@@ -67,7 +67,7 @@ class IssueRowMapperTest {
     }
 
     @Test
-    void testRowToIssueHandlesEmptyAndNullParentId() {
+    void mapRowToIssueHandlesEmptyAndNullParentId() {
         List<Object> rowWithEmptyParent = Arrays.asList("AD-2", "D", "", "OPEN", now.toString(), now.toString());
         List<Object> rowWithNullParent = Arrays.asList("AD-2", "D", null, "OPEN", now.toString(), now.toString());
 

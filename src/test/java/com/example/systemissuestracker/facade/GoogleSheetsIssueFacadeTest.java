@@ -73,7 +73,7 @@ class GoogleSheetsIssueFacadeTest {
     }
 
     @Test
-    void testUpdate_throwsIfIssueNotFound() {
+    void updateStatusThrowsIfIssueNotFound() {
         Issue issue = new Issue("AD-99", "Test desc", null, IssueStatus.OPEN, LocalDateTime.now(), LocalDateTime.now());
         when(sheetsClient.getRange(anyString(), anyString())).thenReturn(Collections.emptyList());
         assertThrows(IssueNotFoundException.class, () -> facade.update(issue));
@@ -101,7 +101,7 @@ class GoogleSheetsIssueFacadeTest {
     }
 
     @Test
-    void testFindByStatus() {
+    void findByStatus() {
         List<List<Object>> allData = Collections.singletonList(row);
         when(sheetsClient.getRange(anyString(), anyString())).thenReturn(allData);
         when(issueRowMapper.rowToIssue(row)).thenReturn(issue);
