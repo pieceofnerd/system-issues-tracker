@@ -2,6 +2,8 @@
 
 This project is a Command Line Interface (CLI) application built with Spring Boot that allows you to track system issues using a Google Sheet as a backend data store. It's designed with a layered architecture to be modular, extensible, and easily adaptable to different persistence mechanisms.
 
+⚠️Please refer to the Design Decisions & Trade-offs and possible Improvments section to understand the required enhancements.
+
 ##  Features
 
 *   **Issue Creation**: Create new issues with a description and an optional parent issue ID.
@@ -170,7 +172,14 @@ You can containerize and run the CLI using Docker:
     ```
     This will drop you into the interactive shell within the container.
 
-    **IMPORTANT**: The `Dockerfile` copies your `src/main/resources/google-creds.json` directly into the image for convenience. For production environments, it is strongly recommended to manage sensitive files like `google-creds.json` more securely, for example, by mounting it as a Docker volume at runtime:
-    ```bash
-    docker run -it -v /path/to/your/local/google-creds.json:/app/src/main/resources/google-creds.json issue-tracker-cli
-    ```
+
+### Design Decisions & Trade-offs and possible Improvments
+
+1)The `Dockerfile` copies `src/main/resources/google-creds.json` directly into the image for convenience. For production environments, it is strongly recommended to manage sensitive files like `google-creds.json` more securely, for example, by mounting it as a Docker volume at runtime
+2) Google Sheets does not support transactions or atomic multi-step operations.Because of this the application does NOT pretend to have transactional guarantees. As future improvment would be better to have a Database to gain transactionalsupport, improved performance, and better data integrity or implement more deep locking system on backend side.
+3)In future would be good to implement idempotency for create/update operations to allow clients to safely retry failed requests without creating duplicate issues or causing incorrect updates.
+4) In future would be good to introduce a caching layerto reduce API calls to Google Sheets for frequently accessed data, improving performance and reducing the risk of hitting rate limits. 
+
+
+
+    
