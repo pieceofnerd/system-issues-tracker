@@ -2,7 +2,7 @@
 
 This project is a Command Line Interface (CLI) application built with Spring Boot that allows you to track system issues using a Google Sheet as a backend data store. It's designed with a layered architecture to be modular, extensible, and easily adaptable to different persistence mechanisms.
 
-⚠️Please refer to the Design Decisions & Trade-offs and possible Improvments section to understand the required enhancements.
+⚠️Please refer to the **Possible Improvments** section to understand the required enhancements.
 
 ##  Features
 
@@ -173,7 +173,7 @@ You can containerize and run the CLI using Docker:
     This will drop you into the interactive shell within the container.
 
 
-### Design Decisions & Trade-offs and possible Improvments
+### Possible Improvments
 
 * The `Dockerfile` copies `src/main/resources/google-creds.json` directly into the image for convenience. For production environments, it is strongly recommended to manage sensitive files like `google-creds.json` more securely, for example, by mounting it as a Docker volume at runtime 
 * Google Sheets does not support transactions or atomic multi-step operations.Because of this the application does NOT pretend to have transactional guarantees. As future improvment would be better to have a Database to gain transactionalsupport, improved performance, and better data integrity or implement more deep locking system on backend side.
