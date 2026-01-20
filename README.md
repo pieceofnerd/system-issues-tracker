@@ -57,7 +57,7 @@ The application uses Google Sheets for data storage. You need to configure a Goo
     *   **IMPORTANT**: Treat this file like a password. Do **NOT** commit it to your version control system (e.g., Git).
 
 5.  **Place the Key in Your Project**:
-    *   Rename the downloaded JSON file to `google-creds.json`.
+    *   Rename the downloaded JSON file to `**google-creds.json**`.
     *   Place this `google-creds.json` file into your project's `src/main/resources` directory.
 
 6.  **Create and Share Your Google Sheet**:
@@ -112,15 +112,20 @@ From the `issue-tracker>` prompt, you can type commands:
 
 *   **Create Issue**:
     ```
-    create --description "Fix login flow on mobile" --parentId AD-1
+     create --d "High CPU usage"
+     create --description "High CPU usage"
+     create --description "High CPU usage" --p "AD-1"
+     create --description "High CPU usage" --parent "AD-1"
     ```
 *   **Update Issue Status**:
     ```
-    update-status --id AD-1 --status IN_PROGRESS
+    update-status --id "AD-2" --s "CLOSED"
+    update-status --id "AD-2" --status "CLOSED"
     ```
 *   **List Issues**:
     ```
-    list --status OPEN
+    list --s "CLOSED"
+    list --status "CLOSED"
     ```
 *   **Get Help**:
     ```
