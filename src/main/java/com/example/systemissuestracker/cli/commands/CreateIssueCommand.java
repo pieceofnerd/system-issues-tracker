@@ -16,10 +16,10 @@ public class CreateIssueCommand implements Runnable {
         this.service = service;
     }
 
-    @Option(names = "--description", required = true, description = "Issue description")
+    @Option(names = {"--description", "--d"}, required = true, description = "Issue description")
     private String description;
 
-    @Option(names = "--parent", required = false, description = "Parent issue id")
+    @Option(names = {"--parent", "--p"}, required = false, description = "Parent issue id")
     private String parentId;
 
     @Override

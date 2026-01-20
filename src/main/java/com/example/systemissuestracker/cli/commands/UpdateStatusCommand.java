@@ -20,7 +20,7 @@ public class UpdateStatusCommand implements Runnable {
     @Option(names = "--id", required = true, description = "Issue id")
     private String id;
 
-    @Option(names = "--status", required = true, description = "New status (OPEN, IN_PROGRESS, CLOSED)")
+    @Option(names ={ "--status", "--s"}, required = true, description = "New status (OPEN, IN_PROGRESS, CLOSED)")
     private IssueStatus status;
 
     @Override

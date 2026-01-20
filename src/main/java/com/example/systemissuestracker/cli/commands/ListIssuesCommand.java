@@ -19,7 +19,7 @@ public class ListIssuesCommand implements Runnable {
         this.service = service;
     }
 
-    @Option(names = "--status", required = true, description = "Status (OPEN, IN_PROGRESS, CLOSED)")
+    @Option(names ={ "--status", "--s"}, required = true, description = "Status (OPEN, IN_PROGRESS, CLOSED)")
     private IssueStatus status;
 
     @Override
