@@ -175,10 +175,10 @@ You can containerize and run the CLI using Docker:
 
 ### Design Decisions & Trade-offs and possible Improvments
 
-1)The `Dockerfile` copies `src/main/resources/google-creds.json` directly into the image for convenience. For production environments, it is strongly recommended to manage sensitive files like `google-creds.json` more securely, for example, by mounting it as a Docker volume at runtime
-2) Google Sheets does not support transactions or atomic multi-step operations.Because of this the application does NOT pretend to have transactional guarantees. As future improvment would be better to have a Database to gain transactionalsupport, improved performance, and better data integrity or implement more deep locking system on backend side.
-3)In future would be good to implement idempotency for create/update operations to allow clients to safely retry failed requests without creating duplicate issues or causing incorrect updates.
-4) In future would be good to introduce a caching layerto reduce API calls to Google Sheets for frequently accessed data, improving performance and reducing the risk of hitting rate limits. 
+* The `Dockerfile` copies `src/main/resources/google-creds.json` directly into the image for convenience. For production environments, it is strongly recommended to manage sensitive files like `google-creds.json` more securely, for example, by mounting it as a Docker volume at runtime 
+* Google Sheets does not support transactions or atomic multi-step operations.Because of this the application does NOT pretend to have transactional guarantees. As future improvment would be better to have a Database to gain transactionalsupport, improved performance, and better data integrity or implement more deep locking system on backend side.
+* In future would be good to implement idempotency for create/update operations to allow clients to safely retry failed requests without creating duplicate issues or causing incorrect updates.
+* In future would be good to introduce a caching layerto reduce API calls to Google Sheets for frequently accessed data, improving performance and reducing the risk of hitting rate limits. 
 
 
 
